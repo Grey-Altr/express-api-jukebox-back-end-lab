@@ -13,7 +13,7 @@ router.post ('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-    const foundTrack = await Track.find();
+    const foundTracks = await Track.find();
     res.status(200).json(foundTrack);
     } catch (err) {
         res.status(500).json({ err: err.message });
