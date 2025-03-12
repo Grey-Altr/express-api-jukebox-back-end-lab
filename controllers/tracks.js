@@ -29,4 +29,13 @@ router.get('/:trackId', async (req, res) => {
     };
 });
 
+router.put('/:trackId', async (req, res) => {
+    try {
+        const updatedTrack = await Track.findByIdAndUpdate(req.params.trackId, req.body, { new: true });
+        res.status(200).json(updatedTrack);
+    } catch (err) {
+        res.status(500).json({ err: err.message });
+    };
+});
+
 module.exports = router;
