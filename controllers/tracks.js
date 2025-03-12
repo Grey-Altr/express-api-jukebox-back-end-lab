@@ -38,4 +38,13 @@ router.put('/:trackId', async (req, res) => {
     };
 });
 
+router.delete('/:trackId', async (req, res) => {
+    try {
+        const deleteTrack = await Track.findByIdAndDelete(req.params.trackId);
+        res.status(200).json(deleteTrack);
+    } catch (err) {
+        res.status(500).json({ err: err.message });
+    };
+});
+
 module.exports = router;
